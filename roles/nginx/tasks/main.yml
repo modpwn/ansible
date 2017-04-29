@@ -1,0 +1,24 @@
+---
+- name: Ajout GPG signing key de dotdeb
+  become: yes
+  apt_key:
+    url: https://www.dotdeb.org/dotdeb.gpg
+
+- name: Ajout de dotdeb
+  apt_repository:
+    repo: deb http://packages.dotdeb.org jessie all
+
+- name: Ajout de dotdeb-src
+  apt_repository:
+    repo: deb-src http://packages.dotdeb.org jessie all
+
+- name: Installation de nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+
+#- name: Supprimer default.conf
+#  file: path=/etc/nginx/sites-enabled/default state=absent
+#  notify: nginx reload
+...

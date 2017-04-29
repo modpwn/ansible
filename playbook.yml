@@ -1,0 +1,6 @@
+---
+- name: Configuration de mon serveur debian-vm
+  hosts: debian-vm
+  remote_user: ansible
+  roles:
+    - nginx
